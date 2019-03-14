@@ -1,6 +1,5 @@
 package cronofy;
 
-import Log.EndpointLog;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -10,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import okhttp3.*;
-import types.LogLevel;
 
 /**
  *
@@ -19,11 +17,9 @@ import types.LogLevel;
 public class CronofyAPI {
 
     private final String token;
-    private final EndpointLog log;
 
-    public CronofyAPI(String token, EndpointLog log) {
+	public CronofyAPI(String token) {
 	this.token = token;
-	this.log = log;
     }
 
     /**
@@ -60,8 +56,6 @@ public class CronofyAPI {
     }
 
     private int AddEvent(String endpoint, String calendarId, String eventId, String name, String description, String start, String end) throws IOException {
-	log.report("Adding event to " + endpoint + " . CalendarId: " + calendarId + "; Name: "
-		+ name + "; Description: " + description + "; Start: " + start + "; End: " + end, LogLevel.Debug);
 
 	Writer w = new StringWriter();
 	JsonWriter writer = new JsonWriter(w);
@@ -86,7 +80,6 @@ public class CronofyAPI {
 		.build();
 
 	Response response = client.newCall(request).execute();
-	log.report("Response: " + response.networkResponse().code(), LogLevel.Debug);
 	return response.networkResponse().code();
     }
 
