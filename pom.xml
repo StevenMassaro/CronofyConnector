@@ -8,12 +8,6 @@
 	<name>Cronofy Connector</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -32,12 +26,6 @@
 			<artifactId>okio</artifactId>
 			<version>1.13.0</version>
 		</dependency>
-		<dependency>
-			<groupId>Logging</groupId>
-			<artifactId>Logging</artifactId>
-			<version>1.0</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -47,7 +35,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>RadarrCalendarSync</mainClass>
+							<mainClass>CronofyAPI</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
@@ -55,6 +43,14 @@
 					</descriptorRefs>
 				</configuration>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 </project>
