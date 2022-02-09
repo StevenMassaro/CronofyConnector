@@ -5,6 +5,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -103,8 +104,7 @@ public class CronofyAPI {
      * @return formatted date string
      */
     private String formatDate(Date input) {
-        Calendar x = Calendar.getInstance();
-        x.setTime(input);
-        return x.get(Calendar.YEAR) + "-" + (x.get(Calendar.MONTH) + 1) + "-" + x.get(Calendar.DAY_OF_MONTH);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(input);
     }
 }
