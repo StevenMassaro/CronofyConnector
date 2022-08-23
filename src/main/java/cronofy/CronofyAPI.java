@@ -57,7 +57,7 @@ public class CronofyAPI {
         return AddEvent(endpoint, calendarId, eventId, name, description, formatDate(start), formatDate(end));
     }
 
-    private int AddEvent(String endpoint, String calendarId, String eventId, String name, String description, String start, String end) throws IOException {
+    public int AddEvent(String endpoint, String calendarId, String eventId, String name, String description, String start, String end) throws IOException {
 
         Writer w = new StringWriter();
         JsonWriter writer = new JsonWriter(w);
