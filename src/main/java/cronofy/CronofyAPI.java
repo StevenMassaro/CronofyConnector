@@ -85,6 +85,29 @@ public class CronofyAPI {
         return response.networkResponse().code();
     }
 
+    public int DeleteEvent(String endpoint, String calendarId, String eventId) throws IOException {
+        Writer w = new StringWriter();
+        JsonWriter writer = new JsonWriter(w);
+        writer.beginObject();
+        writer.name("event_id").value(eventId);
+        writer.endObject();
+        writer.close();
+
+        OkHttpClient client = new OkHttpClient();
+
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, w.toString());
+        Request request = new Request.Builder()
+                .url(endpoint + "/calendars/" + calendarId + "/events")
+                .delete(body)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", "Bearer " + token)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        return response.networkResponse().code();
+    }
+
     /**
      * Returns a string representation of the input, formatted as
      * 2011-12-03T10:15:30Z, and converted from UTC to the time zone specified.

@@ -4,7 +4,7 @@
 	<groupId>CronofyConnector</groupId>
 	<artifactId>CronofyConnector</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1</version>
+	<version>1.2</version>
 	<name>Cronofy Connector</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
